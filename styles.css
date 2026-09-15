@@ -18,9 +18,9 @@ body {
 }
 
 header { background: #fff; padding: 20px 8%; border-bottom: 1px solid #e1e7eb; }
-nav { display: flex; justify-content: space-between; align-items: center; gap: 30px; max-width: 1200px; margin: auto; }
+nav { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 1200px; margin: auto; }
 .logo { font-family: 'Cormorant Garamond', serif; font-size: 25px; font-weight: 600; color: var(--blue); text-decoration: none; white-space: nowrap; }
-.nav-links { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 8px 22px; }
+.nav-links { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px 16px; width: 100%; }
 nav a { color: var(--ink); text-decoration: none; font-size: 15px; }
 nav a:hover, nav a[aria-current="page"] { color: var(--blue-light); }
 
@@ -31,6 +31,8 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; color: var(--blue); }
 h1 { font-size: clamp(52px, 6vw, 78px); line-height: 1.05; margin-bottom: 25px; font-weight: 500; letter-spacing: -2px; }
 .subtitle { font-size: 19px; max-width: 600px; margin-bottom: 30px; line-height: 1.7; }
 .button { display: inline-block; border: 0; background: var(--blue); color: #fff; padding: 14px 28px; border-radius: 5px; text-decoration: none; font: inherit; font-weight: 700; cursor: pointer; }
+.paypal-button { display: inline-block; margin-top: 18px; padding: 13px 24px; border-radius: 5px; background: #0070ba; color: #fff; font-weight: 700; text-decoration: none; }
+.paypal-button.pending { opacity: .55; cursor: not-allowed; }
 .button:hover { background: var(--navy); }
 .button-light { background: #fff; color: var(--blue); }
 .button-light:hover { background: var(--cream); }
@@ -63,6 +65,10 @@ h1 { font-size: clamp(52px, 6vw, 78px); line-height: 1.05; margin-bottom: 25px; 
 .home-photo-card::after { content: ""; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, rgba(20,38,54,.88)); }
 .home-photo-card span { position: absolute; z-index: 1; left: 22px; right: 22px; bottom: 20px; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; line-height: 1.1; text-align: left; }
 .home-photo-card:hover img { transform: scale(1.035); }
+.home-mix-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 35px; }
+.home-mix-card { overflow: hidden; border-radius: 14px; background: #fff; box-shadow: 0 8px 25px rgba(36,54,75,.10); border: 1px solid #e7edf0; }
+.home-mix-card img, .home-mix-card video { display: block; width: 100%; height: 260px; object-fit: cover; background: #e7edf2; }
+.home-mix-card video { aspect-ratio: auto; }
 .themes-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 30px; }
 .themes-grid span { background: var(--mist); color: var(--blue); padding: 10px 16px; border-radius: 30px; font-size: 14px; font-weight: 700; }
 .photo-gallery { columns: 3 260px; column-gap: 18px; margin-top: 35px; }
@@ -72,6 +78,7 @@ h1 { font-size: clamp(52px, 6vw, 78px); line-height: 1.05; margin-bottom: 25px; 
 .photo-gallery img { display: block; width: 100%; height: auto; transition: transform .25s ease; }
 .photo-gallery a:hover img { transform: scale(1.025); }
 .gallery-note { margin-top: 10px !important; color: var(--blue-light); font-size: 14px !important; }
+.guide-editions { padding-top: 30px; }
 .inside-gallery { display: grid; gap: 22px; max-width: 1000px; margin: 35px auto 0; }
 .inside-gallery a { display: block; overflow: hidden; border-radius: 14px; background: #fff; box-shadow: 0 8px 25px rgba(36,54,75,.12); }
 .inside-gallery img { display: block; width: 100%; height: auto; transition: transform .25s ease; }
@@ -112,6 +119,18 @@ h1 { font-size: clamp(52px, 6vw, 78px); line-height: 1.05; margin-bottom: 25px; 
 .video-card video { display: block; width: 100%; aspect-ratio: 16 / 9; background: var(--ink); object-fit: contain; }
 .video-card h3 { padding: 18px 20px; font-size: 25px; text-align: center; }
 .video-card p { padding: 0 20px 20px; margin: 0; color: var(--blue-light); font-size: 14px; font-weight: 700; }
+.video-placeholder { display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 16 / 9; background: linear-gradient(135deg, var(--mist), #dfeaf4); color: var(--blue); font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 3vw, 34px); font-weight: 600; text-align: center; padding: 18px; }
+.video-placeholder span { display: inline-block; border: 1px solid rgba(54,91,120,.25); border-radius: 999px; padding: 10px 16px; background: rgba(255,255,255,.38); }
+.horse-work-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 24px; }
+.gallery-video-card { background: #fff; border: 0; border-radius: 14px; overflow: hidden; box-shadow: 0 5px 18px rgba(36,54,75,.1); }
+.gallery-video-card video { aspect-ratio: 4 / 3; object-fit: cover; background: #e7edf2; }
+.gallery-video-card video::-webkit-media-controls-panel { background: rgba(12, 21, 31, 0.45); }
+@media (max-width: 800px) {
+    .horse-work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+    .horse-work-grid { grid-template-columns: 1fr; }
+}
 
 .buy { background: var(--navy); color: #fff; max-width: none; }
 .buy h1, .buy h2, .buy h3 { color: #fff; }
@@ -134,18 +153,35 @@ footer { background: var(--ink); color: #fff; text-align: center; padding: 30px;
 footer p { margin: 0; font-size: 14px; }
 
 @media (max-width: 800px) {
-    header { padding: 18px 6%; }
-    nav { display: block; }
-    .logo { display: block; text-align: center; margin-bottom: 14px; }
+    header { padding: 16px 6% 18px; }
+    nav { gap: 10px; }
+    .logo { display: block; text-align: center; margin-bottom: 2px; font-size: 24px; }
     .nav-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-    nav .nav-links a { padding: 6px; min-width: 0; text-align: center; font-size: 11px; white-space: nowrap; border: 1px solid var(--sand); border-radius: 6px; }
-    .hero { flex-direction: column; text-align: center; gap: 45px; padding: 55px 8% 50px; }
-    .subtitle { margin-left: auto; margin-right: auto; }
-    .section, .buy-inner { padding: 55px 8%; }
-    .section h2 { font-size: 40px; }
-    .book-quote { font-size: 24px !important; padding-left: 18px; }
-    .story-grid, .press-grid, .book-options, .buy .book-options, .creator-grid, .video-grid, .home-photo-grid { grid-template-columns: 1fr; }
+    nav .nav-links a { padding: 7px 8px; min-width: 0; text-align: center; font-size: 11px; white-space: nowrap; border: 1px solid #edf1f3; border-radius: 999px; background: #f7f9fb; }
+    .hero { flex-direction: column; text-align: center; gap: 38px; padding: 42px 6% 38px; }
+    h1 { font-size: clamp(38px, 12vw, 54px); margin-bottom: 18px; letter-spacing: -1px; }
+    .subtitle { margin-left: auto; margin-right: auto; font-size: 17px; }
+    .section, .buy-inner { padding: 48px 6%; }
+    .guide-editions { padding-top: 24px; }
+    .section h2 { font-size: 34px; margin-bottom: 18px; }
+    .section p { font-size: 16px; }
+    .book-quote { font-size: 22px !important; padding-left: 18px; margin: 18px 0 24px !important; }
+    .story-grid, .press-grid, .book-options, .buy .book-options, .creator-grid, .video-grid, .home-photo-grid, .home-mix-grid { grid-template-columns: 1fr; }
     .home-photo-card, .home-photo-card img { min-height: 240px; }
-    .photo-gallery { columns: 2 140px; gap: 12px; }
+    .home-photo-card span { font-size: 22px; }
+    .photo-gallery { columns: 1; gap: 12px; }
     .photo-gallery a { margin-bottom: 12px; }
+    .inside-gallery { gap: 14px; }
+    .video-card h3 { font-size: 22px; }
+    .home-mix-card img, .home-mix-card video { height: 220px; }
+}
+
+@media (max-width: 520px) {
+    .nav-links { grid-template-columns: 1fr; }
+    .logo { font-size: 22px; }
+    nav .nav-links a { font-size: 10px; }
+    .eyebrow { letter-spacing: 2px; font-size: 12px; }
+    .section h2 { font-size: 30px; }
+    .button { width: 100%; text-align: center; }
+    .hero .button { width: auto; }
 }
