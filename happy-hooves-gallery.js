@@ -4,8 +4,8 @@ if (gallery) {
   gallery.replaceChildren();
   const fragment = document.createDocumentFragment();
 
-  for (let index = 1; index <= 151; index += 1) {
-    if (index === 34 || index === 44 || index === 62 || index === 121 || index === 124 || index === 127) continue;
+  for (let index = 1; index <= 150; index += 1) {
+    if (index === 34 || index === 44 || index === 62 || index === 82 || index === 112 || index === 121 || index === 124 || index === 127) continue;
 
     const number = String(index).padStart(3, "0");
     const source = `gallery/happy-hooves/visit-${number}.jpeg`;
